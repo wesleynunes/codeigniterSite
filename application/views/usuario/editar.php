@@ -1,6 +1,4 @@
-
-
-<form method="post" action="<?php echo base_url(); ?>usuario/atualizar/<?php echo $usuario->id_usuario; ?>">
+<form enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>usuario/atualizar/<?php echo $usuario->id_usuario; ?>">
 <div class="row">
         <div class="col-md-6">
             <h1 class="h3 mb-0 text-gray-800">Editar Usuário</h1>
@@ -43,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label>Arquivo</label>
-                <input class="form-control" type="text" name="arquivo" value="<?php echo $usuario->arquivo; ?>" placeholder="" />
-            </div>
+                <input type="file" name="userfile"/>
+            </div> 
         </div><!-- /.row -->
 </form>

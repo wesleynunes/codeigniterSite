@@ -9,6 +9,11 @@
     <?php echo '<p class="alert alert-success">' .$this->session->flashdata('usuario_salvado') . '</p>'; ?>
 <?php endif; ?>
 
+<?php if($this->session->flashdata('usuario_atualizado')) : ?>
+    <?php echo '<p class="alert alert-success">' .$this->session->flashdata('usuario_atualizado') . '</p>'; ?>
+<?php endif; ?>
+
+
 <?php if($this->session->flashdata('usuario_deletado')) : ?>
     <?php echo '<p class="alert alert-danger">' .$this->session->flashdata('usuario_deletado') . '</p>'; ?>
 <?php endif; ?>
@@ -31,25 +36,22 @@
                         <th>Operações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php if ($usuario == FALSE): ?>
-                        <tr><td colspan="2">Nenhum contato encontrado</td></tr>
-                    <?php else: ?>
-                        <?php foreach ($usuario as $usuarios): ?>
-                            <tr>
-                                <td><?php echo $usuarios->id_usuario; ?></td>
-                                <td><?php echo $usuarios->usuario; ?></td>
-                                <td><?php echo $usuarios->email; ?></td>
-                                <td><?php echo $usuarios->arquivo; ?></td>
-                                <td><?php echo $usuarios->data_criacao; ?></td>
-                                <td><?php echo $usuarios->data_alteracao; ?></td>                                                    
-                                <td>
-                                    <a class="btn btn-primary btn-sm" href="<?php echo base_url(); ?>usuario/editar/<?php echo $usuarios->id_usuario; ?>" ><i class="fas fa-user-edit"></i></a>
-                                    <a class="btn btn-danger btn-sm" href="<?php echo base_url(); ?>usuario/deletar/<?php echo $usuarios->id_usuario; ?>" ><i class="far fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                <tbody>                 
+                    <?php foreach ($usuario as $usuarios): ?>
+                        <tr>
+                            <td><?php echo $usuarios->id_usuario; ?></td>
+                            <td><?php echo $usuarios->usuario; ?></td>
+                            <td><?php echo $usuarios->email; ?></td>
+                            <!-- <td><?php echo $usuarios->arquivo; ?></td> -->
+                            <td><img src="<?php echo base_url()."./assets/uploads/usuario/".$usuarios->arquivo;?>" alt="" class="img-thumbnail" width="80" height="50"/></td>                                
+                            <td><?php echo $usuarios->data_criacao; ?></td>
+                            <td><?php echo $usuarios->data_alteracao; ?></td>                                                    
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="<?php echo base_url(); ?>usuario/editar/<?php echo $usuarios->id_usuario; ?>" ><i class="fas fa-user-edit"></i></a>
+                                <a class="btn btn-danger btn-sm" href="<?php echo base_url(); ?>usuario/deletar/<?php echo $usuarios->id_usuario; ?>" ><i class="far fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>                
                 </tbody>
             </table>
         </div>

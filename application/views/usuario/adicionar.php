@@ -1,8 +1,12 @@
 
 <!--Display form validation errors-->
 <?php echo validation_errors('<p class="alert alert-dismissable alert-danger">'); ?>
-
-<form method="post" action="<?php echo base_url(); ?>usuario/salvar">
+<?php 
+    if(isset($error)):
+        echo "<div class='alert alert-danger'>".$error."</div>";
+    endif; 
+?>	
+<form  enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>usuario/salvar">
     <div class="row">
         <div class="col-md-6">
             <h1 class="h3 mb-0 text-gray-800">Adicionar novo usuário</h1>
@@ -34,19 +38,19 @@
         <div class="col-lg-8">
             <div class="form-group">
                 <label>Usuario</label>
-                <input class="form-control" type="text" name="usuario" value="<?php echo set_value('usuario'); ?>" placeholder="" />
+                <input id="usuario" class="form-control" type="text" name="usuario" value="<?php echo set_value('usuario'); ?>" placeholder="" required="required" />
             </div>         
             <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" type="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="" />
+                <input id="email" class="form-control" type="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="" />
             </div>        
             <div class="form-group">
                 <label>Password</label>
-                <input class="form-control" type="password" name="senha" value="<?php echo set_value('senha'); ?>" placeholder="" />
+                <input id="senha" class="form-control" type="password" name="senha" value="<?php echo set_value('senha'); ?>" placeholder="" />
             </div>
             <div class="form-group">
-                <label>Nome Completo</label>
-                <input class="form-control" type="text" name="arquivo" value="<?php echo set_value('arquivo'); ?>" placeholder="" />
+                <label for="exampleFormControlFile1">Arquivo</label>
+                <input class="form-control-file" type="file" name="userfile" />
             </div>               
         </div>
 </form>
