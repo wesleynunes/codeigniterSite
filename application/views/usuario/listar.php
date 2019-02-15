@@ -48,7 +48,7 @@
                             <td><?php echo $usuarios->data_alteracao; ?></td>                                                    
                             <td>
                                 <a class="btn btn-primary btn-sm" href="<?php echo base_url(); ?>usuario/editar/<?php echo $usuarios->id_usuario; ?>" ><i class="fas fa-user-edit"></i></a>
-                                <a class="btn btn-danger btn-sm" href="<?php echo base_url(); ?>usuario/deletar/<?php echo $usuarios->id_usuario; ?>" ><i class="far fa-trash-alt"></i></a>
+                                <a class="btn btn-danger btn-sm" href="<?php echo base_url(); ?>usuario/deletar/<?php echo $usuarios->id_usuario; ?>" onclick="return confirm('Deseja realmente excluir o usuário');"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>                

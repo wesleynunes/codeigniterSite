@@ -50,7 +50,7 @@ class Usuario_model extends CI_Model
      /*
 	 * Get Single User
 	 */
-    public function usuario_id($id)
+    public function usuario_id($id=NULL)
     {
         $this->db->where('id_usuario',$id);
         $query = $this->db->get('usuarios');

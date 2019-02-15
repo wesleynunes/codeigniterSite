@@ -1,4 +1,13 @@
-<form enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>usuario/atualizar/<?php echo $usuario->id_usuario; ?>">
+<!--Display form validation errors-->
+
+<?php 
+    if(isset($error)):
+        echo "<div class='alert alert-danger'>".$error."</div>";
+    endif;    
+
+    echo validation_errors('<p class="alert alert-dismissable alert-danger">');
+?>
+<form enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>usuario/atualizar/<?php echo $usuario_editar->id_usuario; ?>">
 <div class="row">
         <div class="col-md-6">
             <h1 class="h3 mb-0 text-gray-800">Editar Usuário</h1>
@@ -29,19 +38,19 @@
         <div class="col-lg-12">
             <div class="form-group">
                 <label>Usuario</label>
-                <input class="form-control" type="text" name="usuario" value="<?php echo $usuario->usuario; ?>" placeholder="" />
+                <input class="form-control" type="text" name="usuario" value="<?php echo $usuario_editar->usuario; ?>" placeholder="" />
             </div>         
             <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" type="email" name="email" value="<?php echo $usuario->email; ?>" placeholder="" />
+                <input class="form-control" type="email" name="email" value="<?php echo $usuario_editar->email; ?>" placeholder="" />
             </div>
             <div class="form-group">
                 <label>Senha</label>
-                <input class="form-control" type="password" name="senha" value="<?php echo $usuario->senha; ?>" placeholder="" />
+                <input class="form-control" type="password" name="senha" placeholder="" />
             </div>
             <div class="form-group">
-                <label>Arquivo</label>
-                <input type="file" name="userfile"/>
+                <label for="exampleFormControlFile1">Arquivo</label>
+                <input class="form-control-file" type="file" name="userfile"/>
             </div> 
         </div><!-- /.row -->
 </form>

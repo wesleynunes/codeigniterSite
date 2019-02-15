@@ -1,10 +1,10 @@
 
 <!--Display form validation errors-->
-<?php echo validation_errors('<p class="alert alert-dismissable alert-danger">'); ?>
 <?php 
     if(isset($error)):
         echo "<div class='alert alert-danger'>".$error."</div>";
     endif; 
+    echo validation_errors('<p class="alert alert-dismissable alert-danger">');
 ?>	
 <form  enctype="multipart/form-data" method="post" action="<?php echo base_url(); ?>usuario/salvar">
     <div class="row">
@@ -32,13 +32,13 @@
     </div> -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Adicionar usuário</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Adicionar usuário</h6>  
         </div>
         &nbsp
         <div class="col-lg-8">
             <div class="form-group">
                 <label>Usuario</label>
-                <input id="usuario" class="form-control" type="text" name="usuario" value="<?php echo set_value('usuario'); ?>" placeholder="" required="required" />
+                <input id="usuario" class="form-control" type="text" name="usuario" value="<?php echo set_value('usuario'); ?>" placeholder="" required="required"  />
             </div>         
             <div class="form-group">
                 <label>Email</label>

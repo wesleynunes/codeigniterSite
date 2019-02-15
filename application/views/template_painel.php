@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Site 01</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url(); ?>assets/painel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">  
@@ -17,7 +17,16 @@
    
 
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url(); ?>assets/painel/css/sb-admin-2.min.css" rel="stylesheet">  
+  <link href="<?php echo base_url(); ?>assets/painel/css/sb-admin-2.min.css" rel="stylesheet"> 
+
+  
+  <!-- kendo ui--> 
+  <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.default.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.common.min.css" rel="stylesheet">
+
+  <!-- Jquery ui -->
+  <link href="<?php echo base_url(); ?>assets/jqueryui/css/jquery-ui.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/jqueryui/css/jquery-ui.theme.min.css" rel="stylesheet">
 
 </head>
 
@@ -63,8 +72,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Configurações</h6>
-            <a class="collapse-item" href="<?php echo base_url(); ?>usuario/listar">Lista de usuario</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>usuario/adicionar">Adicionar</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>usuario/listar">Lista de usuario</a>          
           </div>
         </div>
       </li>
@@ -78,10 +86,13 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Customizar oficina:</h6>
-            <a class="collapse-item"  href="<?php echo base_url(); ?>upload/index">Upload Imagens</a>
+            <a class="collapse-item"  href="<?php echo base_url(); ?>oficina/upload/index">Upload Imagens</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/upload_registrado/upload">Upload Registrado</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/index">Jquery ui</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Kendo ui:</h6>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/read">Kendo Crud</a>              
           </div>
         </div>
       </li>
@@ -382,6 +393,14 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url(); ?>assets/painel/js/demo/chart-area-demo.js"></script>  
   <script src="<?php echo base_url(); ?>assets/painel/js/demo/chart-pie-demo.js"></script> 
+
+  <!-- kendoui -->
+  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.all.min.js"></script>       
+  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.datepicker.min.js"></script>  
+
+  <!-- jguery ui -->
+  <script src="<?php echo base_url(); ?>assets/jqueryui/js/jquery-ui.min.js"></script>      
+
 </body>
 </html>
 
