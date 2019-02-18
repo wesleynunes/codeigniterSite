@@ -10,5 +10,6 @@ class Categoria extends CI_Controller
         parent::__construct();      
         $this->load->model('categoria_model');      
     }
-    
+
+    //teste de branch    
 }
