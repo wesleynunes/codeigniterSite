@@ -11,5 +11,6 @@ class Categoria extends CI_Controller
         $this->load->model('categoria_model');      
     }
 
-    //teste de branch    
+    //teste de branch
+    //teste git revert    
 }
