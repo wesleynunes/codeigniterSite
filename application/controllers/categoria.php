@@ -12,5 +12,5 @@ class Categoria extends CI_Controller
     }
 
     //teste de branch
-    //teste git revert    
+    //teste git revert teste    
 }
