@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,8 +20,11 @@
 
   
   <!-- kendo ui--> 
-  <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.default.min.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.common.min.css" rel="stylesheet">
+  <!-- <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.default.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/kendoui/styles/kendo.common.min.css" rel="stylesheet"> -->
+  <link href="<?php echo base_url(); ?>assets/kendoui.2019.1.115/styles/kendo.default.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/kendoui.2019.1.115/styles/kendo.common.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/kendoui.2019.1.115/styles/kendo.default.mobile.min.css" rel="stylesheet">
 
   <!-- Jquery ui -->
   <link href="<?php echo base_url(); ?>assets/jqueryui/css/jquery-ui.min.css" rel="stylesheet">
@@ -92,7 +94,9 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Kendo ui:</h6>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/read">Kendo Crud</a>              
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/gridNew">Kendo Grid Nova</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/window">Kendo Window</a>    
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/crud">Kendo Crud</a>              
           </div>
         </div>
       </li>
@@ -395,8 +399,10 @@
   <script src="<?php echo base_url(); ?>assets/painel/js/demo/chart-pie-demo.js"></script> 
 
   <!-- kendoui -->
-  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.all.min.js"></script>       
-  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.datepicker.min.js"></script>  
+  <!-- <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.all.min.js"></script>       
+  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.datepicker.min.js"></script> -->
+  <script src="<?php echo base_url(); ?>assets/kendoui.2019.1.115/js/kendo.all.min.js"></script>       
+  <script src="<?php echo base_url(); ?>assets/kendoui.2019.1.115/js/kendo.datepicker.min.js"></script>   
 
   <!-- jguery ui -->
   <script src="<?php echo base_url(); ?>assets/jqueryui/js/jquery-ui.min.js"></script>      
