@@ -96,7 +96,8 @@
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/gridNew">Kendo Grid Nova</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/window">Kendo Window</a>    
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/crud">Kendo Crud</a>              
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/crud">Kendo Crud</a> 
+            <a class="collapse-item" onclick="myFunction()">Teste javascript</a>                    
           </div>
         </div>
       </li>
@@ -381,6 +382,12 @@
     </div>
   </div>
 
+  <script>
+    function myFunction() {
+      alert("Hello World!"); 
+    }
+  </script>
+
   <!-- Bootstrap core JavaScript-->
   <script src="<?php echo base_url(); ?>assets/painel/vendor/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/painel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>  
@@ -399,8 +406,6 @@
   <script src="<?php echo base_url(); ?>assets/painel/js/demo/chart-pie-demo.js"></script> 
 
   <!-- kendoui -->
-  <!-- <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.all.min.js"></script>       
-  <script src="<?php echo base_url(); ?>assets/kendoui/js/kendo.datepicker.min.js"></script> -->
   <script src="<?php echo base_url(); ?>assets/kendoui.2019.1.115/js/kendo.all.min.js"></script>       
   <script src="<?php echo base_url(); ?>assets/kendoui.2019.1.115/js/kendo.datepicker.min.js"></script>   
 

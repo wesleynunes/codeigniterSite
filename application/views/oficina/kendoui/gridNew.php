@@ -4,11 +4,12 @@
     <div id="grid"></div>
     <script>
         $(document).ready(function () {
-            var crudServiceBaseUrl = "<?php echo base_url(); ?>oficina/kendoui/GridNew/read",
+            var crudServiceBaseUrl = "<?php echo base_url(); ?>oficina/kendoui",
                 dataSource = new kendo.data.DataSource({
                     transport: {
                         read:  {
-                            url: crudServiceBaseUrl + "/read",
+                            url: crudServiceBaseUrl + "/read/read",
+                            type: "POST",
                             dataType: "json"
                         },
                         update: {
@@ -17,11 +18,12 @@
                             dataType: "json"
                         },
                         destroy: {
-                            url: crudServiceBaseUrl + "/Destroy",
-                            dataType: "jsonp"
+                            url: crudServiceBaseUrl + "/Destroy/id_categoria",
+                            type: "POST",
+                            dataType: "json"
                         },
                         create: {
-                            url: crudServiceBaseUrl + "/Create",
+                            url: crudServiceBaseUrl + "/create/create",
                             type: "post",
                             dataType: "json"
                         },
@@ -56,8 +58,13 @@
                     { field: "categoria", title:"CATEGORIA", format: "{0:c}", width: "120px" },
                     { field: "data_criacao", title:"DATA DE CRIACAO", width: "120px" },
                     { field: "data_alteracao", title:"DATA DE ALTERACAO", width: "120px", editor: customBoolEditor },
+                    //{ command: ["destroy"], title: "&nbsp;", width: "120px", template:'<button id="${id_categoria}" onclick="confirmeDelete( \'${id_categoria}\')"></button>' }],
                     { command: ["edit", "destroy"], title: "&nbsp;", width: "120px" }],
                 editable: "popup"
+
+                //{ field: "", width: 15, attributes:{style:"text-align:center;"}, headerAttributes:{style:"text-align:center;"}, headerTemplate:"<i class=icon-trash icon-black>", template:'<button id="${DATA}" onclick="confirmeDelete( \'${ CODTABFOLGA }${DATA}\')" class="btn btn-danger btn-mini"><i class="icon-trash icon-white"></button>'}        
+       
+
             });
         });
 

@@ -66,6 +66,8 @@ class Kendoui extends CI_Controller
         
         $this->template->load('template_painel','oficina/kendoui/crud', $data);      
     }
+
+    
     
 
     public function read()
@@ -107,8 +109,17 @@ class Kendoui extends CI_Controller
 
     function destroy()
     {
-        $this->usuario_model->destroy($id);      
-        redirect('oficina/kendoui/read');  
+        $arr = func_get_args();
+        $data = array();
+
+        if(isset($arr[0])):
+        if($arr[0] == 'destroy'):
+            echo $this->oficina_model->destroy();
+            exit();     
+        endif;
+        endif;  
+      
+        $this->template->load('template_painel', 'oficina/kendoui/crud', $data);
     }
   
 }

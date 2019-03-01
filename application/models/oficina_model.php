@@ -57,10 +57,10 @@ class Oficina_model extends CI_Model{
     // }
 
 
-    public function destroy($id)
+    public function destroy($data)
     {
-        $this->db->where('id_usuario', $id);
-        $this->db->delete('usuarios');
+        $this->db->where('id_categoria', $data);
+        $this->db->delete('categorias');
         return true;
     }
 
