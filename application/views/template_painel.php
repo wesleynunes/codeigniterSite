@@ -101,10 +101,13 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Customizar oficina:</h6>
+            <h6 class="collapse-header">Uploads:</h6>
             <a class="collapse-item"  href="<?php echo base_url(); ?>oficina/upload/index">Upload Imagens</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/upload_registrado/upload">Upload Registrado</a>
+            <h6 class="collapse-header">Jguery ui e Jguery:</h6>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/index">Jquery ui</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/modal">Jquery ui modal</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jguery/index">Jquery</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Kendo ui:</h6>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>
@@ -424,7 +427,8 @@
   <script src="<?php echo base_url(); ?>assets/kendoui.2019.1.115/js/kendo.datepicker.min.js"></script>   
 
   <!-- jguery ui -->
-  <script src="<?php echo base_url(); ?>assets/jqueryui/js/jquery-ui.min.js"></script>      
+  <script src="<?php echo base_url(); ?>assets/jqueryui/js/jquery-ui.min.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>assets/jqueryui/js/jquery-3.1.1.min.js"></script>      -->
 
 </body>
 </html>
