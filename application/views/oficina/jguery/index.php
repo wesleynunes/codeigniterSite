@@ -2,7 +2,7 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Listar Categoria jguery</h1>
-	<button id="btnAdd"   class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="far fa-address-card"></i>Adicionar</button>
+	  <a href="javascript:void(0);" data-toggle="modal" data-target="#Modal_Add" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="far fa-address-card"></i> Adicionar</a>
 </div>
 
 <div class="card shadow mb-4">
@@ -23,39 +23,75 @@
 						<td>Ação</td>
 					</tr>
 				</thead>
-				<tbody id="gedData">			
+				<tbody id="getData">			
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- Form Adicionar -->
+<form>
+		<div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+							<div class="form-group row">
+									<label class="col-md-2 col-form-label">Product Code</label>
+									<div class="col-md-10">
+										<input type="text" name="categoria" id="categoria" class="form-control">
+									</div>
+							</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" type="submit" id="btn_save" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</form>
+
+<form>
+<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+			<h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+			</button>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4> -->
       </div>
-      <div class="modal-body">
-        	<form id="myForm" action="" method="post" class="form-horizontal">
-        		<input type="hidden" name="txtId" value="0">
+      <div class="modal-body">        	
+						<!-- <form id="formEdit" action="" method="post" class="form-horizontal"> -->        		
         		<div class="form-group">
+						<input type="hidden" name="id_categoria" id="id_categoria" value="0">
         			<label for="name" class="label-control col-md-4">Categoria</label>
         			<div class="col-md-8">
-        				<input type="text" name="txtCategoria" class="form-control">
+        				<input type="text" name="txtCategoria" id="txtCategoria" class="form-control">
         			</div>
         		</div>        	
         	</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" id="btnSave" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="btnEdit" class="btn btn-primary">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+</form>
 
+
+<!-- Form deletar -->
 <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -73,7 +109,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 
 <script>
 	$(function(){
@@ -98,69 +133,114 @@
 									'<td>'+data[i].categoria+'</td>'+
 									'<td>'+data[i].data_criacao+'</td>'+
 									'<td>'+data[i].data_alteracao+'</td>'+
-									'<td>'+
-										'<a href="javascript:;" class="btn btn-info item-edit" data="'+data[i].id_categoria+'">Edit</a>'+
-										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id_categoria+'">Delete</a>'+
+									'<td style="text-align:right;">'+
+										'<a href="javascript:;" class="btn btn-info btn-sm item-edit" data="'+data[i].id_categoria+'">Edit</a>'+' '+
+										'<a href="javascript:;" class="btn btn-danger btn-sm item-delete" data="'+data[i].id_categoria+'">Delete</a>'+
 									'</td>'+
 							    '</tr>';
 					}
-					$('#gedData').html(html);
+					$('#getData').html(html);
 				},
 				error: function(){
 					alert('Could not get Data from Database');
 				}
 			});
-		}
+		}	
+	
+		 //Save product
+		 $('#btn_save').on('click',function(){
+			var categoria = $('#categoria').val();           
+			$.ajax({
+					type : "POST",
+					url  : "<?php echo site_url('oficina/jguery/saveCategoria')?>",
+					dataType : "JSON",
+					data : {categoria:categoria},
+					success: function(data){
+							$('[name="categoria"]').val("");
+							$('#Modal_Add').modal('hide');
+							getCategoria();
+					}
+			});
+			return false;
+		 });
 
-		//Add New
-		$('#btnAdd').click(function(){
-			$('#myModal').modal('show');
-			$('#myModal').find('.modal-title').text('Adicionar Categoria');
-			$('#myForm').attr('action', '<?php echo base_url() ?>oficina/jguery/saveCategoria');
+
+
+		 //edit
+		$('#getData').on('click', '.item-edit', function(){
+			var id_categoria = $(this).attr('data');
+			var categoria = $('#txtCategoria').val(); 
+			$('#modalEdit').modal('show');
+			//$('#formEdit').attr('action', '<?php echo base_url() ?>oficina/jguery/updateCategoria');			
+			$.ajax({
+				type: 'ajax',
+				method: 'get',
+				url: '<?php echo base_url() ?>oficina/jguery/editCategoria',
+				data: {id_categoria:id_categoria, categoria:categoria},
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					$('input[name=txtCategoria]').val(data.categoria);					
+					$('input[name=id_categoria]').val(data.id_categoria);
+				},
+				error: function(){
+					alert('Could not Edit Data');
+				}
+			});
 		});
 
-		$('#btnSave').click(function(){
-			var url = $('#myForm').attr('action');
-			var data = $('#myForm').serialize();
-			//validate form
-			var categoria = $('input[name=txtCategoria]');			
-			var result = '';
-			if(categoria.val()==''){
-				categoria.parent().parent().addClass('has-error');
-			}else{
-				categoria.parent().parent().removeClass('has-error');
-				result +='1';
-			}		
 
-			if(result=='12'){
+		//Save product
+		$('#btnEdit').on('click',function(){
+			// var id_categoria = $(this).attr('data');
+			var id_categoria = $('#id_categoria').val(); 
+			var txtcategoria = $('#txtCategoria').val();   /// categoria que vai para o banco         
+			$.ajax({
+					type : "POST",
+					url  : "<?php echo site_url('oficina/jguery/updateCategoria')?>",
+					dataType : "JSON",
+					data : {id_categoria:id_categoria, txtcategoria:txtcategoria}, /// isso e o que vai para o update na model 
+					success: function(data){
+						// alert("Hello! I am an alert box!!");							
+							$('[name="txtCategoria"]').val("");							
+							$('#modalEdit').modal('hide');
+							getCategoria();
+					}
+			});
+			return false;
+			alert("Hello! I am an alert box!!");
+		 });
+
+
+
+		 //delete- 
+		$('#getData').on('click', '.item-delete', function(){
+			var id_categoria = $(this).attr('data');
+			$('#deleteModal').modal('show');
+			//prevent previous handler - unbind()
+			$('#btnDelete').unbind().click(function(){
 				$.ajax({
 					type: 'ajax',
-					method: 'post',
-					url: url,
-					data: data,
+					method: 'get',
 					async: false,
+					url: '<?php echo base_url() ?>oficina/jguery/deleteCategoria',
+					data:{id_categoria:id_categoria},
 					dataType: 'json',
 					success: function(response){
 						if(response.success){
-							$('#myModal').modal('hide');
-							$('#myForm')[0].reset();
-							if(response.type=='add'){
-								var type = 'added'
-							}else if(response.type=='update'){
-								var type ="updated"
-							}
-							$('.alert-success').html('Categoria '+type+' Sucesso').fadeIn().delay(4000).fadeOut('slow');
+							$('#deleteModal').modal('hide');
+							$('.alert-success').html('Employee Deleted successfully').fadeIn().delay(4000).fadeOut('slow');
 							getCategoria();
 						}else{
 							alert('Error');
 						}
 					},
 					error: function(){
-						alert('Could not add data');
+						alert('Error deleting');
 					}
 				});
-			}
+			});
 		});
-
+		 	
 	});
 </script>

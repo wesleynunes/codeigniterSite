@@ -21,12 +21,27 @@ class Jguery extends CI_Controller
     }
 
     function saveCategoria(){
-        $result = $this->model->saveCategoria();
+        $data=$this->model->saveCategoria();
+		echo json_encode($data);
+    }
+
+    public function editCategoria(){
+		$result = $this->model->editCategoria();
+		echo json_encode($result);
+	}
+
+
+    function updateCategoria(){
+		$data=$this->model->updateCategoria();
+		echo json_encode($data);
+	}
+
+    function deleteCategoria(){
+		$result = $this->model->deleteCategoria();
 		$msg['success'] = false;
-		$msg['type'] = 'add';
 		if($result){
 			$msg['success'] = true;
 		}
 		echo json_encode($msg);
-    }
+	}
 }
