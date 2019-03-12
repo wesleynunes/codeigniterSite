@@ -1,17 +1,18 @@
 <div class="card shadow mb-4">
     <!--Display form validation errors-->
+
     <?php 
         if(isset($error)):
             echo "<div class='alert alert-danger'>".$error."</div>";
         endif; 
-        echo validation_errors('<p class="alert alert-dismissable alert-danger">');
+        echo validation_errors('<p class="alert alert-dismissable alert-danger">');         
 
         if($this->session->flashdata('categoria_salvado')) :
-            echo '<p class="alert alert-success">' .$this->session->flashdata('categoria_salvado') . '</p>'; 
+            echo '<p class="alert alert-success">' .$this->session->flashdata('categoria_salvado') . '</p>';
         endif;
-
+      
         if($this->session->flashdata('categoria_deletada')) :
-            echo '<p class="alert alert-danger">' .$this->session->flashdata('categoria_deletada') . '</p>';
+            echo '<p class="alert alert-success">' .$this->session->flashdata('categoria_deletada') . '</p>';
         endif;
     ?>
 

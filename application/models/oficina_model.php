@@ -2,14 +2,17 @@
 
 class Oficina_model extends CI_Model{
   
+
+    // model para kendo ui 
     public function read()
     {    
       $ret = array();
       $this->db  
   
       ->select("*")
-      ->from("categorias");       
-    
+      ->from("categorias")       
+      ->order_by('data_criacao', 'desc');
+
       $ret_db = $this->db->get()->result_array();
   
       foreach ($ret_db as $k => $v):            
@@ -19,15 +22,18 @@ class Oficina_model extends CI_Model{
       return json_encode($ret);
     }
 
-    /*
-     * Insert
-     *
-     * @param - (array) $data
-     */
-    public function create($data)
+    
+    public function create()
     {
-        $this->db->insert('categoria', $data);
-        return true;
+      $data = array(
+				'categoria' 	    => $this->input->post('addCategoria'), 
+				'data_criacao'    =>date('Y-m-d H:i:s'),
+        'data_alteracao'  =>date('Y-m-d H:i:s'),  
+			);
+		  $result=$this->db->insert('categorias', $data);
+		  return $result;
+        // $this->db->insert('categoria', $data);
+        // return true;
     }   
 
     public function destroy($data)
@@ -38,7 +44,7 @@ class Oficina_model extends CI_Model{
     }
 
 
-    //model para jguery ui 
+    //model para jguery  --------------------------------------------------------------------------------------
     public function getCategoria(){
       $this->db->order_by('data_criacao', 'desc');
       $query = $this->db->get('categorias');
@@ -49,20 +55,19 @@ class Oficina_model extends CI_Model{
       }
     }
 
-
     public function saveCategoria(){
       $data = array(
-				'categoria' 	  => $this->input->post('categoria'), 
-				'data_criacao'=>date('Y-m-d H:i:s'),
-        'data_alteracao'=>date('Y-m-d H:i:s'),  
+				'categoria' 	    => $this->input->post('addCategoria'), 
+				'data_criacao'    =>date('Y-m-d H:i:s'),
+        'data_alteracao'  =>date('Y-m-d H:i:s'),  
 			);
 		  $result=$this->db->insert('categorias', $data);
 		  return $result;
     }
 
     public function editCategoria(){
-      $id_categoria = $this->input->get('id_categoria');
-      $this->db->where('id_categoria', $id_categoria);
+      $idCategoria = $this->input->get('editIdCategoria');
+      $this->db->where('id_categoria', $idCategoria);
       $query = $this->db->get('categorias');
       if($query->num_rows() > 0){
         return $query->row();
@@ -73,47 +78,34 @@ class Oficina_model extends CI_Model{
 
     function updateCategoria(){
 
-      $id_categoria=$this->input->post('id_categoria');
-      $categoria=$this->input->post('txtcategoria');    
+      $idCategoria = $this->input->post('editIdCategoria');
+      $data = array(
+				'categoria' 	    => $this->input->post('editCategoria'), 
+				// 'data_criacao'    =>date('Y-m-d H:i:s'),
+        'data_alteracao'  =>date('Y-m-d H:i:s'),  
+      );
+      $this->db->where('id_categoria', $idCategoria);
+		  $this->db->update('categorias', $data);
+		  if($this->db->affected_rows() > 0){
+        return true;
+      }else{
+        return false;
+      }
 
-      $this->db->set('categoria', $categoria);
-      $this->db->where('id_categoria', $id_categoria);
-      $result=$this->db->update('categorias');
-      return $result;
+      // $idCategoria=$this->input->post('editIdCategoria');
+      // $categoria=$this->input->post('editCategoria');    
 
-
-
-
-      // $id_categoria = $this->input->post('id_categoria');
-      // $data = array(
-			// 	'categoria' 	  => $this->input->post('categoria'), 
-			// 	'data_criacao'=>date('Y-m-d H:i:s'),
-      //   'data_alteracao'=>date('Y-m-d H:i:s'),  
-      // );
-      // $this->db->where('id_categoria', $id_categoria);
-		  // $this->db->insert('categorias', $data);
-		  // return true;
-
-
-
-      // $field = array(
-      //   'categoria'=>$this->input->post('categoria'),
-      //   'data_criacao'=>date('Y-m-d H:i:s'),   
-      //   'data_alteracao'=>date('Y-m-d H:i:s'), 
-      // );
-      // $this->db->where('id_categoria', $id_categoria);
-      // $this->db->update('categorias', $field);
-      // if($this->db->affected_rows() > 0){
-      //   return true;
-      // }else{
-      //   return false;
-      // }
+      // $this->db->set('categoria', $categoria);
+      // $this->db->where('id_categoria', $idCategoria);
+      // $result=$this->db->update('categorias');
+      // return $result;     
+      
     }
     
     
     function deleteCategoria(){
-      $id_categoria = $this->input->get('id_categoria');
-		  $this->db->where('id_categoria', $id_categoria);
+      $idCategoria = $this->input->get('idCategoria');
+		  $this->db->where('id_categoria', $idCategoria);
 		  $this->db->delete('categorias');
 		  if($this->db->affected_rows() > 0){
 			  return true;

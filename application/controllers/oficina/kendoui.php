@@ -92,10 +92,10 @@ class Kendoui extends CI_Controller
         $data = array();
 
         if(isset($arr[0])):
-        if($arr[0] == 'create'):
-            echo $this->oficina_model->create();
-            exit();     
-        endif;
+            if($arr[0] == 'create'):
+                echo $this->oficina_model->create();
+                exit();     
+            endif;
         endif;   
 
         //$this->load->view('oficina/kendoui/crud', $data);
