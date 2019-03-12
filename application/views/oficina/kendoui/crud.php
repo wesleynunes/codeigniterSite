@@ -114,12 +114,22 @@
                 {field: "categoria", title: "CATEGORIA", width: 25},
                 {field: "data_criacao", title: "DATA DE CRIAÇÃO", width: 20},
                 {field: "data_alteracao", title: "DATA DE ALTERAÇÃO", width: 20},
-                { command: [{ 
-                                name: "delete",
-                                text: "delete",
-                                click: _handleDelete,
-                                id: "id_categoria",                               
-                            }], title: "Opcões", width: "20px" 
+                { command: [                                
+                                { 
+                                    name: "delete",
+                                    text: "delete",
+                                    click: _handleDelete,
+                                    id: "id_categoria",                               
+                                },
+
+                                { 
+                                    name: "edit",
+                                    text: "edit",
+                                    click: _handleEdit,
+                                    id: "id_categoria",                               
+                                }                        
+                            
+                            ], title: "Opcões", width: "20px" 
                 }
                   
             
@@ -208,23 +218,39 @@
     //     // $('#spanDeletar').html(dataSourceDeletar.categoria); // carrega span para data 
     // }
 
-    function editar() {
-        //alert("Hello World!"); 
-        $("#windowEditar").data("kendoWindow").open().center().title("Adicionar Categoria")
-    }
+    // function editar() {
+    //     //alert("Hello World!"); 
+    //     $("#windowEditar").data("kendoWindow").open().center().title("Adicionar Categoria")
+    // }
 
 
     function _handleDelete(id_categoria) {
         // alert("Hello World!");
-        var dataSourceDeletar = $('#gridPrincipal').data('kendoGrid').dataSource.get(id_categoria); 
-        // $("#windowDeletar").data("kendoWindow").open().center().title("Adicionar Categoria")
+        //var dataSourceDeletar = $('#gridPrincipal').data('kendoGrid').dataSource.get(id_categoria); 
+        $("#windowDeletar").data("kendoWindow").open().center().title("Adicionar Categoria")
         
         // var dataSourceDeletar = $('#gridPrincipal').data('kendoGrid').dataSource.get(id_categoria);  
-        $("#windowDeletar").data("kendoWindow").open().center().title("Excluir: "  + dataSourceDeletar.categoria); // centralizar titulo     
-        $('#spanDeletar').html(dataSourceDeletar.categoria); // carrega span para data 
+        //$("#windowDeletar").data("kendoWindow").open().center().title("Excluir: "  + dataSourceDeletar.categoria); // centralizar titulo     
+        //$('#spanDeletar').html(dataSourceDeletar.categoria); // carrega span para data 
         // dataitem = grid.dataItem($(event.currentTarget).closest("tr"));
         // kWindow.open();
     };
+
+    function _handleEdit(id_categoria) {
+
+        $("#windowEditar").data("kendoWindow").open().center().title("Adicionar Categoria")
+        // alert("Hello World!");
+        //var dataSourceDeletar = $('#gridPrincipal').data('kendoGrid').dataSource.get(id_categoria); 
+        // $("#windowDeletar").data("kendoWindow").open().center().title("Adicionar Categoria")
+        
+        // var dataSourceDeletar = $('#gridPrincipal').data('kendoGrid').dataSource.get(id_categoria);  
+        //$("#windowDeletar").data("kendoWindow").open().center().title("Excluir: "  + dataSourceDeletar.categoria); // centralizar titulo     
+        //$('#spanDeletar').html(dataSourceDeletar.categoria); // carrega span para data 
+        // dataitem = grid.dataItem($(event.currentTarget).closest("tr"));
+        // kWindow.open();
+    };
+
+
        
     $('#btnSalvar').on('click',function(){
     // alert("Hello World!");
