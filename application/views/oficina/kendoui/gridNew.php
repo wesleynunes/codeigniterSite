@@ -40,7 +40,8 @@
                             id: "id_categoria",
                             fields: {
                                 id_categoria: { editable: false },
-                                categoria: { validation: { required: true } },
+                                // categoria: { validation: { required: true } },
+                                categoria: { required: true },
                                 data_criacao: { editable: false },
                                 data_alteracao: { editable: false },
                             }
@@ -55,7 +56,7 @@
                 toolbar: ["create"],
                 columns: [
                     { field:"id_categoria", title: "ID", width: "80px" },
-                    { field: "categoria", title:"CATEGORIA", format: "{0:c}", width: "120px" },
+                    { field: "categoria", title:"CATEGORIA", width: "120px" },
                     { field: "data_criacao", title:"DATA DE CRIACAO", width: "120px" },
                     { field: "data_alteracao", title:"DATA DE ALTERACAO", width: "120px", editor: customBoolEditor },
                     //{ command: ["destroy"], title: "&nbsp;", width: "120px", template:'<button id="${id_categoria}" onclick="confirmeDelete( \'${id_categoria}\')"></button>' }],

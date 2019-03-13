@@ -36,11 +36,17 @@ class Oficina_model extends CI_Model{
         // return true;
     }   
 
-    public function destroy($data)
-    {
-        $this->db->where('id_categoria', $data);
-        $this->db->delete('categorias');
-        return true;
+    public function destroy()
+    {         
+		  $idCategoria = $this->input->get('idCategoria');
+		  $this->db->where('id_categoria', $idCategoria);
+		  $this->db->delete('categorias');
+		  if($this->db->affected_rows() > 0){
+			  return true;
+		  }else{
+			return false;
+		  }  
+
     }
 
 

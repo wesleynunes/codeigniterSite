@@ -110,7 +110,7 @@ class Kendoui extends CI_Controller
     function destroy()
     {
         $arr = func_get_args();
-        $data = array();
+        $data = array();   
 
         if(isset($arr[0])):
         if($arr[0] == 'destroy'):
@@ -119,7 +119,13 @@ class Kendoui extends CI_Controller
         endif;
         endif;  
       
-        $this->template->load('template_painel', 'oficina/kendoui/crud', $data);
+        $this->template->load('template_painel', 'oficina/kendoui/crud', $data);       
     }
+
+
+    // function destroy(){
+    //     $data=$this->oficina_model->destroy();
+    //     echo json_encode($data);       
+    // }
   
 }
