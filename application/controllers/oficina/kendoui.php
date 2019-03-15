@@ -9,7 +9,7 @@ class Kendoui extends CI_Controller
     public function __construct()
     {
         parent::__construct();  
-        $this->load->model('oficina_model');   
+        $this->load->model('kendoui_model', 'model');   
         $this->load->library('form_validation');
     }
 
@@ -19,7 +19,6 @@ class Kendoui extends CI_Controller
     }
 
 
-
     function grid()
     {
         $arr = func_get_args();
@@ -27,7 +26,7 @@ class Kendoui extends CI_Controller
 
         if(isset($arr[0])):
             if($arr[0] == 'read'):
-                echo $this->oficina_model->read();
+                echo $this->model->read();
                 exit();     
             endif;
         endif;  
@@ -43,7 +42,7 @@ class Kendoui extends CI_Controller
 
         if(isset($arr[0])):
             if($arr[0] == 'read'):
-                echo $this->oficina_model->read();
+                echo $this->model->read();
                 exit();     
             endif;
         endif;  
@@ -59,16 +58,14 @@ class Kendoui extends CI_Controller
 
         if(isset($arr[0])):
             if($arr[0] == 'read'):
-                echo $this->oficina_model->read();
+                echo $this->model->read();
                 exit();     
             endif;
         endif;  
         
         $this->template->load('template_painel','oficina/kendoui/crud', $data);      
     }
-
-    
-    
+       
 
     public function read()
     {
@@ -76,13 +73,12 @@ class Kendoui extends CI_Controller
         $data = array();
 
         if(isset($arr[0])):
-        if($arr[0] == 'read'):
-            echo $this->oficina_model->read();
-            exit();     
-        endif;
+            if($arr[0] == 'read'):
+                echo $this->model->read();
+                exit();     
+            endif;
         endif;   
-
-        //$this->load->view('oficina/kendoui/crud', $data);
+       
         $this->template->load('template_painel', 'oficina/kendoui/crud', $data);
     }
 
@@ -93,18 +89,32 @@ class Kendoui extends CI_Controller
 
         if(isset($arr[0])):
             if($arr[0] == 'create'):
-                echo $this->oficina_model->create();
+                echo $this->model->create();
                 exit();     
             endif;
-        endif;   
-
-        //$this->load->view('oficina/kendoui/crud', $data);
+        endif;  
+        
         $this->template->load('template_painel', 'oficina/kendoui/crud', $data);      
+    }
+
+    public function edit(){
+        $data = $this->model->edit();
+        echo json_encode($data);
     }
 
     function update()
     {
+        $arr = func_get_args();
+        $data = array();   
 
+        if(isset($arr[0])):
+            if($arr[0] == 'update'):
+                echo $this->model->update();
+                exit();     
+            endif;
+        endif;  
+      
+        $this->template->load('template_painel', 'oficina/kendoui/crud', $data);   
     }
 
     function destroy()
@@ -113,19 +123,13 @@ class Kendoui extends CI_Controller
         $data = array();   
 
         if(isset($arr[0])):
-        if($arr[0] == 'destroy'):
-            echo $this->oficina_model->destroy();
-            exit();     
-        endif;
+            if($arr[0] == 'destroy'):
+                echo $this->model->destroy();
+                exit();     
+            endif;
         endif;  
       
         $this->template->load('template_painel', 'oficina/kendoui/crud', $data);       
-    }
-
-
-    // function destroy(){
-    //     $data=$this->oficina_model->destroy();
-    //     echo json_encode($data);       
-    // }
+    }  
   
 }

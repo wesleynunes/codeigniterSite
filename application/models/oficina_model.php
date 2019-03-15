@@ -45,8 +45,37 @@ class Oficina_model extends CI_Model{
 			  return true;
 		  }else{
 			return false;
-		  }  
+		  }
+    }
 
+    public function edit(){
+
+      $idCategoria = $this->input->get('idEditCategoria');
+      $this->db->where('id_categoria', $idCategoria);
+      $query = $this->db->get('categorias');
+      if($query->num_rows() > 0){
+        return $query->row();
+      }else{
+        return false;
+      }
+
+    }
+
+    public function update()
+    {         
+		  $idCategoria = $this->input->post('idEditCategoria');
+      $data = array(
+				'categoria' 	    => $this->input->post('editCategoria'), 
+				// 'data_criacao'    =>date('Y-m-d H:i:s'),
+        'data_alteracao'  =>date('Y-m-d H:i:s'),  
+      );
+      $this->db->where('id_categoria', $idCategoria);
+		  $this->db->update('categorias', $data);
+		  if($this->db->affected_rows() > 0){
+        return true;
+      }else{
+        return false;
+      }
     }
 
 
