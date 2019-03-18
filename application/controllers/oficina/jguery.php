@@ -7,7 +7,7 @@ class Jguery extends CI_Controller
   */
   public function __construct(){
       parent::__construct();  
-      $this->load->model('oficina_model', 'model');  
+      $this->load->model('jguery_model', 'model');  
   }
 
   public function index()

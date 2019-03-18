@@ -42,7 +42,7 @@
     </div>
     <div class="modal-footer">     
         <!-- <button type="button" id="btnEditar" class="btn btn-success">Editar</button>    -->
-        <button type="button" onclick="btnEditar()" class="btn btn-success">Editar</button>   
+        <button type="button" id="btnEditar" class="btn btn-success">Editar</button>   
         <button onclick="fecharWindow()" type="button" class="btn btn-secondary">Fechar</button>    
     </div>   
 </div>
@@ -111,10 +111,11 @@
             modal: true,
             visible: false,
             resizable: false,               
-            close: function(e){                              
+            close: function(e){
+                limparDados();                                
             }         
         });
-
+     
 
         $('#windowEditar').kendoWindow({
             width:"650", 
@@ -148,23 +149,23 @@
 
 
     $('#btnSalvar').on('click',function(){
-    // alert("Hello World!");
-    var addCategoria = $('#addCategoria').val();    
+        // alert("Hello World!");
+        var addCategoria = $('#addCategoria').val();    
 
-    $.ajax({
-        type : "POST",
-        url  : "<?php echo site_url('oficina/kendoui/create/create')?>",
-        dataType : "JSON",
-        data : {addCategoria:addCategoria},
-        success: function(data)
-        {
-            //alert("Hello World!");
-            // $('[name="addCategoria"]').val("");							
-            $('.alert-success').html('Categoria inserida com sucesso').fadeIn().delay(4000).fadeOut('slow');
-            $("#windowAdicionar").data("kendoWindow").close(); // fehcar janela  
-            $('#gridPrincipal').data('kendoGrid').dataSource.read();                            
-        }
-    });  
+        $.ajax({
+            type : "POST",
+            url  : "<?php echo site_url('oficina/kendoui/create/create')?>",
+            dataType : "JSON",
+            data : {addCategoria:addCategoria},
+            success: function(data)
+            {
+                //alert("Hello World!");
+                // $('[name="addCategoria"]').val("");							
+                $('.alert-success').html('Categoria inserida com sucesso').fadeIn().delay(4000).fadeOut('slow');
+                $("#windowAdicionar").data("kendoWindow").close(); // fehcar janela  
+                $('#gridPrincipal').data('kendoGrid').dataSource.read();                            
+            }
+        });  
         return false; 
     });  
     
@@ -198,8 +199,8 @@
         });
     }
 
-    function btnEditar()
-    {         
+
+    $('#btnEditar').on('click',function(){
         // alert("Teste editar");   
         var idEditCategoria  = $('#idEditCategoria').val();
         var editCategoria 	 = $('#editCategoria').val();
@@ -223,7 +224,34 @@
         });
         return false;
         alert("Não foi possível obter dados do banco de dados");
-    } 
+    }); 
+
+    // function btnEditar()
+    // {         
+    //     // alert("Teste editar");   
+    //     var idEditCategoria  = $('#idEditCategoria').val();
+    //     var editCategoria 	 = $('#editCategoria').val();
+
+    //     //pega valores id_categoria e categorias
+    //     // var idEditCategoria = $("#idEditCategoria").val(dataEditar.id_categoria); 
+    //     // var editCategoria   = $("#editCategoria").val(dataEditar.categoria); 
+
+    //     $.ajax({
+    //             type : "POST",
+    //             url  : "<?php echo site_url('oficina/kendoui/update/update')?>",
+    //             dataType : "json",
+    //             data : {idEditCategoria:idEditCategoria,editCategoria:editCategoria}, /// isso e o que vai para o update na model 
+    //             success: function(data){
+    //                     // alert("Hello! I am an alert box!!");							
+    //                     // $('[name="editCategoria"]').val("");					
+    //                     $('.alert-success').html('Categoria alterada com sucesso').fadeIn().delay(4000).fadeOut('slow');
+    //                     $("#windowEditar").data("kendoWindow").close(); // fehcar janela  
+    //                     $('#gridPrincipal').data('kendoGrid').dataSource.read(); 
+    //             }
+    //     });
+    //     return false;
+    //     alert("Não foi possível obter dados do banco de dados");
+    // } 
 
 
     // function deletar(id_categoria){
@@ -259,6 +287,12 @@
         }      
     }  
      
+
+
+     // funçao par limpar dados inseridos depois das janela fechadas em cancelar ou sair 
+    function limparDados(){      
+        $("#addCategoria").val("");    
+    };
     
     function fecharWindow()
     {   

@@ -105,15 +105,14 @@
             <a class="collapse-item"  href="<?php echo base_url(); ?>oficina/upload/index">Upload Imagens</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/upload_registrado/upload">Upload Registrado</a>
             <h6 class="collapse-header">Jguery ui e Jguery:</h6>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/index">Jquery ui</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/modal">Jquery ui modal</a>
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jguery/index">Jquery</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/index">Jquery ui</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/jqueryui/modal">Jquery ui modal</a>            
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Kendo ui:</h6>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/gridNew">Kendo Grid Nova</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/window">Kendo Window</a>    
             <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/crud">Kendo Crud</a> 
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/gridNew">Kendo GridCrud</a>
+            <a class="collapse-item" href="<?php echo base_url(); ?>oficina/kendoui/grid">Kendo Grid</a>            
             <a class="collapse-item" onclick="myFunction()">Teste javascript</a>                    
           </div>
         </div>

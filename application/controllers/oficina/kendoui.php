@@ -14,11 +14,6 @@ class Kendoui extends CI_Controller
     }
 
 
-    function window(){
-        $this->template->load('template_painel','oficina/kendoui/window');    
-    }
-
-
     function grid()
     {
         $arr = func_get_args();
@@ -131,5 +126,17 @@ class Kendoui extends CI_Controller
       
         $this->template->load('template_painel', 'oficina/kendoui/crud', $data);       
     }  
+
+
+    public function get(){
+        $data=$this->model->get();
+        echo json_encode($data);
+    }
+
+    function save(){
+        $data=$this->model->save();
+        echo json_encode($data);
+    }
+  
   
 }
