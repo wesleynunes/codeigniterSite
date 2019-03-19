@@ -38,6 +38,38 @@ CREATE TABLE IF NOT EXISTS categorias(
     primary key(id_categoria),
     unique index categoria_UNIQUE (categoria asc)
 )ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `tbl_roles`
+--
+
+CREATE TABLE `roles` (
+  `id_role` tinyint(4) NOT NULL COMMENT 'role id',
+  `role` varchar(50) NOT NULL COMMENT 'role text'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_roles`
+--
+
+INSERT INTO `roles` (`id_role`, `role`) VALUES
+(1, 'Admin'),
+(2, 'Manager'),
+(3, 'Employee');
     
 
 
