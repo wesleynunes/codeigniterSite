@@ -57,9 +57,10 @@ CREATE TABLE `ci_sessions` (
 -- Table structure for table `tbl_roles`
 --
 
-CREATE TABLE `roles` (
-  `id_role` tinyint(4) NOT NULL COMMENT 'role id',
-  `role` varchar(50) NOT NULL COMMENT 'role text'
+CREATE TABLE roles (
+  id_role 	tinyint(4) NOT NULL COMMENT 'role id',
+  role	 	varchar(50) NOT NULL COMMENT 'role text',
+  primary key(id_role)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
